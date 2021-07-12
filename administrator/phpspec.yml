@@ -1,0 +1,8 @@
+suites:
+  administrator_suite:
+    namespace: Terranet
+    src_path: src
+    spec_prefix: spec
+
+extensions:
+    - PhpSpec\Laravel\Extension\LaravelExtension

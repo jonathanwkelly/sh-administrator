@@ -1,0 +1,50 @@
+
+.asset-picker-launch{
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+#modal-bg{
+	width: 100%;
+	height: calc(100% - 0px);
+	background: rgba(0, 0, 0, .4);
+	z-index: 900;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#asset-library-modal{
+	width: 80%;
+	height: calc(100% - 200px);
+	background: white;
+	position: fixed;
+	top: 100px;
+	left: 10%;
+	z-index: 9999;
+}
+
+#asset-library-modal iframe{
+	width: 100%;
+	border: 0;
+	height: 100%;
+}
+
+/*
+	Hide some elements so that it works as an embedded Shopify app
+ */
+
+.main-header,
+.main-sidebar .user-panel,
+.main-sidebar .sidebar-form,
+.main-sidebar .sidebar-menu li a#dashboard{
+	display: none !important;
+}
+
+/*
+	Increase widths of asset inputs
+*/
+input[name="banner_asset_url"],
+input[name="cover_asset_url"]{
+	width: calc(100% - 40px) !important;
+}

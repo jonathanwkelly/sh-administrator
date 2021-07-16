@@ -1,32 +1,38 @@
 {
-  "name": "jonathanwkelly/sh-administrator",
-  "description": "SH Admin",
-  "require": {
-    "php": ">=5.6.0",
-    "laravelcollective/html": "^5.1|^5.2",
-    "doctrine/dbal": "~2.5",
-    "davejamesmiller/laravel-breadcrumbs": "3.0.*",
-    "codesleeve/laravel-stapler": "1.0.*",
-    "terranet/menus": "2.2.*",
-    "terranet/php-humanizer": "2.*",
-    "creativeorange/gravatar": "^1.0"
-  },
-  "autoload": {
-    "psr-0": {
-      "Terranet\\Administrator": "administrator/src/Terranet/Administrator"
+    "name": "terranet/administrator",
+    "description": "Admin Architect - Administration Framework for Laravel. Create Laravel Admin panels at Reactive speed.",
+    "authors": [
+        {
+            "name": "Endi",
+            "email": "endi1982@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "laravelcollective/html": "^5.1|^5.2",
+        "doctrine/dbal": "~2.5",
+        "davejamesmiller/laravel-breadcrumbs": "3.0.*",
+        "codesleeve/laravel-stapler": "1.0.*",
+        "terranet/menus": "2.2.*",
+        "terranet/php-humanizer": "2.*",
+        "creativeorange/gravatar": "^1.0"
     },
-    "files": [
-      "administrator/src/helpers.php"
-    ]
-  },
-  "suggest": {
-    "adminarchitect/options": "to store and manage settings",
-    "adminarchitect/localizer": "to have language detection support by Request Uri, Domain name and Environment",
-    "adminarchitect/news": "news module",
-    "adminarchitect/pages": "pages module",
-    "adminarchitect/contacts": "configurable contact form",
-    "terranet/translatable": "to manage multilingual records",
-    "terranet/slug": "to allow slugging"
-  },
-  "minimum-stability": "dev"
+    "autoload": {
+        "psr-0": {
+            "Terranet\\Administrator": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "suggest": {
+        "adminarchitect/options": "to store and manage settings",
+        "adminarchitect/localizer": "to have language detection support by Request Uri, Domain name and Environment",
+        "adminarchitect/news": "news module",
+        "adminarchitect/pages": "pages module",
+        "adminarchitect/contacts": "configurable contact form",
+        "terranet/translatable": "to manage multilingual records",
+        "terranet/slug": "to allow slugging"
+    },
+    "minimum-stability": "dev"
 }

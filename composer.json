@@ -16,7 +16,7 @@
       "Terranet\\Administrator": "src/"
     },
     "files": [
-      "src/helpers.php"
+      "administrator/src/helpers.php"
     ]
   },
   "suggest": {

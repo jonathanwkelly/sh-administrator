@@ -24,7 +24,7 @@ class ServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
-        $baseDir = base_path('vendor/terranet/administrator');
+        $baseDir = base_path('vendor/jonathanwkelly/sh-administrator');
 
         /*
          * Publish & Load routes

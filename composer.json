@@ -11,16 +11,6 @@
         "jonathanwkelly/sh-php-humanizer": "dev-master",
         "creativeorange/gravatar": "^1.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jonathanwkelly/sh-menus.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/jonathanwkelly/sh-php-humanizer.git"
-        }
-    ],
     "autoload": {
         "psr-0": {
             "Terranet\\Administrator": "src/"

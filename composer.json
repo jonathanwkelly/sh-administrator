@@ -7,10 +7,20 @@
         "doctrine/dbal": "~2.5",
         "davejamesmiller/laravel-breadcrumbs": "3.0.*",
         "codesleeve/laravel-stapler": "1.0.*",
-        "jonathanwkelly/sh-menus": "2.2.*",
-        "jonathanwkelly/sh-php-humanizer": "2.*",
+        "jonathanwkelly/sh-menus": "dev-master",
+        "jonathanwkelly/sh-php-humanizer": "dev-master",
         "creativeorange/gravatar": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jonathanwkelly/sh-menus.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/jonathanwkelly/sh-php-humanizer.git"
+        }
+    ],
     "autoload": {
         "psr-0": {
             "Terranet\\Administrator": "src/"

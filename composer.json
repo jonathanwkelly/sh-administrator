@@ -13,7 +13,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Terranet\\Administrator": "src/"
+      "Terranet\\Administrator": "administrator/src/Terranet/Administrator"
     },
     "files": [
       "administrator/src/helpers.php"

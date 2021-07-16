@@ -7,8 +7,8 @@
         "doctrine/dbal": "~2.5",
         "davejamesmiller/laravel-breadcrumbs": "3.0.*",
         "codesleeve/laravel-stapler": "1.0.*",
-        "jonathanwkelly/sh-menus": "^1.0",
-        "jonathanwkelly/sh-php-humanizer": "^1.0",
+        "jonathanwkelly/sh-menus": "1.0.0",
+        "jonathanwkelly/sh-php-humanizer": "1.0.0",
         "creativeorange/gravatar": "^1.0"
     },
     "repositories": [

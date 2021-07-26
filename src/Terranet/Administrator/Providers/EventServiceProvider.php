@@ -15,13 +15,12 @@ class EventServiceProvider extends AppEventServiceProvider
     /**
      * Register any other events for your application.
      *
-     * @param \Illuminate\Contracts\Events\Dispatcher $events
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
-        $this->handleMissingModuleParameter($events);
+//        $this->handleMissingModuleParameter($events);
 
         $config = app('scaffold.config');
 
@@ -41,21 +40,21 @@ class EventServiceProvider extends AppEventServiceProvider
      * Ex: if GET route /admin/pages is handled by custom controller CustomPagesController@index
      * @param DispatcherContract $events
      */
-    protected function handleMissingModuleParameter(DispatcherContract $events)
-    {
-        $events->listen('router.matched', function (Route $route, Request $request) {
-            if ($route->getParameter('module'))
-                return true;
-
-            if ($resolver = app('scaffold.config')->get('resource.resolver')) {
-                $module = call_user_func_array($resolver, [$route, $request]);
-            } else {
-                $module = $request->segment(app('scaffold.config')->get('resource.segment', 2));
-            }
-
-            $route->setParameter('module', $module);
-
-            return $module;
-        });
-    }
+//    protected function handleMissingModuleParameter(DispatcherContract $events)
+//    {
+//        $events->listen('router.matched', function (Route $route, Request $request) {
+//            if ($route->getParameter('module'))
+//                return true;
+//
+//            if ($resolver = app('scaffold.config')->get('resource.resolver')) {
+//                $module = call_user_func_array($resolver, [$route, $request]);
+//            } else {
+//                $module = $request->segment(app('scaffold.config')->get('resource.segment', 2));
+//            }
+//
+//            $route->setParameter('module', $module);
+//
+//            return $module;
+//        });
+//    }
 }

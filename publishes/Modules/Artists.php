@@ -2,7 +2,7 @@
 
 namespace App\Http\Terranet\Administrator\Modules;
 
-use App\User;
+use App\Models\Artist;
 use Terranet\Administrator\Contracts\Module\Editable;
 use Terranet\Administrator\Contracts\Module\Exportable;
 use Terranet\Administrator\Contracts\Module\Filtrable;
@@ -17,11 +17,11 @@ use Terranet\Administrator\Traits\Module\HasSortable;
 use Terranet\Administrator\Traits\Module\ValidatesForm;
 
 /**
- * Administrator Users Module
+ * Administrator Resource Artists
  *
  * @package Terranet\Administrator
  */
-class Users extends Resource implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
+class Artists extends Resource implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
 {
     use HasFilters, HasForm, HasSortable, ValidatesForm, AllowFormats;
 
@@ -30,26 +30,9 @@ class Users extends Resource implements Navigable, Filtrable, Editable, Validabl
      *
      * @var string
      */
-    protected $model = User::class;
-
-    public function title() {
-        return trans("administrator::module.resources.users");
-    }
+    protected $model = Artist::class;
 
     public function linkAttributes() {
-        return ['icon' => 'fa fa-user'];
-    }
-
-    public function form() {
-
-        return array_merge(
-            $this->scaffoldForm(),
-            [
-                'password' => [
-                    'type' => 'text',
-                    'description' => 'enter a new password, only if you want to change it'
-                ]
-            ]
-        );
+        return ['icon' => 'fa fa-paint-brush'];
     }
 }

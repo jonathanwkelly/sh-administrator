@@ -22,7 +22,7 @@ class MembersPanel implements Widgetable, Sortable
         $signedStatistics = $this->createModel()
                                  ->where('created_at', '>=', $monthAgo)
                                  ->select([DB::raw('COUNT(id) AS cnt'), DB::raw('DATE(created_at) as dt')])
-                                 ->groupBy('dt')->pluck('cnt', 'dt');
+                                 ->groupBy('dt')->lists('cnt', 'dt');
 
         return view(app('scaffold.template')->dashboard('members'), [
             'total'            => $total,

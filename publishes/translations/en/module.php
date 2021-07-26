@@ -14,12 +14,13 @@ return [
         'password' => 'Password',
     ],
     'resources'   => [
-        'users'     => 'All users',
+        'users'     => 'Users',
+        'artworks'  => 'Artwork',
         'languages' => 'Languages',
         'settings'  => 'Settings',
     ],
     'groups'      => [
-        'users' => 'Users',
+        'users'     => 'Users'
     ],
     'action' => [
         'create' => 'Create :resource',

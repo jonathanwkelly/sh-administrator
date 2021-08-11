@@ -50,11 +50,11 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
             [
                 'collection' => \admin\filter\select(
                     'Collection',
-                    ['' => '--All--'] + \App\Models\Collection::orderBy('name', 'asc')->lists('name', 'id')->toArray(),
+                    ['' => '--All--'] + \App\Models\Collection::orderBy('name', 'asc')->pluck('name', 'id')->toArray(),
                     function($query, $value) { // filter query
                         return $query->whereIn(
                             'artworks.id',
-                            \App\Models\ArtworkCollection::where('collection_id', $value)->lists('artwork_id')->toArray()
+                            \App\Models\ArtworkCollection::where('collection_id', $value)->pluck('artwork_id')->toArray()
                         );
                     }
                 )
@@ -69,6 +69,7 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
     public function form() {
 
         $shopifyLib = \App::make(Shopify::class)->init(ShopifyAccessToken::first());
+
         $formFields = array_merge(
             $this->scaffoldForm(),
             [
@@ -109,7 +110,7 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
                     'multiple' => TRUE,
                     'description' => 'ctrl+click/cmd+click to select multiple',
                     'options' => function() {
-                        return \App\Models\Collection::lists('name', 'id');
+                        return \App\Models\Collection::pluck('name', 'id');
                     }
                 ],
                 'shopifyProducts.shopify_product_id' => [
@@ -117,20 +118,26 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
                     'type' => 'select',
                     'multiple' => TRUE,
                     'description' => 'Select the substrates onto which this artwork can be printed.<br><br>ctrl+click/cmd+click to select multiple',
-                    'options' => $items =  $shopifyLib->products(['DATA' => ['collection_id' => env('SHOPIFY_SUBSTRATES_COLLECTION_ID')]])->filter(function ($item)
-                    {
-                        if((strpos($item->name, 'Build-Your-Own') === false)) {
-                            return $item;
-                        }
-                    })->lists('name', 'id'),
-
-
-
+                    'options' => $shopifyLib->products(['DATA' => ['collection_id' => env('SHOPIFY_SUBSTRATES_COLLECTION_ID')]])
+                        ->filter(function ($item) {
+                            if((strpos($item->name, 'Build-Your-Own') === false)) {
+                                return $item;
+                            }
+                        })
+                        ->pluck('name', 'id'),
                 ],
                 'orientation' => \admin\form\select('Orientation', [
                     'portrait' => 'Portrait',
                     'landscape' => 'Landscape'
-                ])
+                ]),
+                'legacy_product_id' => [
+                    'type' => 'text',
+                    'readonly' => true
+                ],
+                'year' => [
+                    'type' => 'text',
+                    'readonly' => true
+                ]
             ]
         );
         $formFields = array_merge(
@@ -141,7 +148,7 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
                 //     'type' => 'select',
                 //     'multiple' => TRUE,
                 //     'description' => 'Manually define which items should be shown as related.<br><br>ctrl+click/cmd+click to select multiple',
-                //     'options' => $shopifyLib->products()->lists('name', 'id')
+                //     'options' => $shopifyLib->products()->pluck('name', 'id')
                 // ],
                 'generate_assets' => [
                     'type' => 'boolean',

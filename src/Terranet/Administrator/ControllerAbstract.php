@@ -5,6 +5,7 @@ namespace Terranet\Administrator;
 use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Session;
 use Terranet\Administrator\Middleware\Authenticate;
 use Terranet\Administrator\Middleware\AuthProvider;
 use Terranet\Administrator\Middleware\Badges;
@@ -52,7 +53,7 @@ class ControllerAbstract extends BaseController
     public function rememberPreviousPage()
     {
         if (URL::current() !== URL::previous()) {
-            session()->set('admin_previous_url', URL::previous());
+            Session::put('admin_previous_url', URL::previous());
         }
     }
 

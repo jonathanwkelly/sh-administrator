@@ -5,7 +5,7 @@ namespace App\Http\Terranet\Administrator\Modules;
 use App\Models\Artwork;
 use App\Models\ShopifyAccessToken;
 use \App\Models\Artist;
-use App\Lib\Shopify;
+use App\Lib\Shopify\Shopify;
 use Terranet\Administrator\Contracts\Module\Editable;
 use Terranet\Administrator\Contracts\Module\Exportable;
 use Terranet\Administrator\Contracts\Module\Filtrable;
@@ -68,7 +68,7 @@ class Artworks extends Resource implements Navigable, Filtrable, Editable, Valid
 
     public function form() {
 
-        $shopifyLib = \App::make(Shopify::class)->init(ShopifyAccessToken::first());
+        $shopifyLib = \App::make('ShopifyAPI');
 
         $formFields = array_merge(
             $this->scaffoldForm(),

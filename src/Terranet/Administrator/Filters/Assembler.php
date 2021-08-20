@@ -47,7 +47,7 @@ class Assembler
     {
         foreach ($filters as $element) {
             // do not apply filter if no request var were found.
-            if (!app('request')->has($element->getName())) {
+            if (app('request')->has($element->getName()) == '') {
                 continue;
             }
 

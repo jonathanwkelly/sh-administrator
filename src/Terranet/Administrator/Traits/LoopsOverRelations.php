@@ -27,7 +27,7 @@ trait LoopsOverRelations
             $object = call_user_func([$object, $relation]);
 
             if ($object instanceof BelongsToMany) {
-                return $object->pluck($object->getQualifiedRelatedKeyName())->toArray();
+                return $object->pluck($object->getQualifiedRelatedPivotKeyName())->toArray();
             }
 
             if (! ($object instanceof HasOne || $object instanceof BelongsTo)) {

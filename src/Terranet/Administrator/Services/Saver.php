@@ -194,7 +194,7 @@ class Saver implements SaverContract
      */
     protected function forgetNullValues($relation, $values)
     {
-        $keys = explode('.', $relation->getQualifiedRelatedKeyName());
+        $keys = explode('.', $relation->getQualifiedRelatedPivotKeyName());
         $key = array_pop($keys);
 
         return array_filter((array)$values[$key], function ($value) {

@@ -122,7 +122,7 @@ class Filter implements FilterContract
 
     protected function createFilterElement(Element $element)
     {
-        if ($this->request->has($element->getName())) {
+        if ($this->request->has($element->getName()) != '') {
             $element->setValue(
                 $this->request->get($element->getName())
             );

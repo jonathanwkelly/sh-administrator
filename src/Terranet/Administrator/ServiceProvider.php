@@ -3,7 +3,6 @@
 namespace Terranet\Administrator;
 
 use App\User;
-use Codesleeve\LaravelStapler\Providers\L5ServiceProvider as StaplerServiceProvider;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
@@ -96,7 +95,6 @@ class ServiceProvider extends BaseServiceProvider
                 'Html' => HtmlFacade::class,
                 'Form' => FormFacade::class,
             ],
-            StaplerServiceProvider::class,
             MenusServiceProvider::class => [
                 'AdminNav' => MenuFacade::class,
             ],

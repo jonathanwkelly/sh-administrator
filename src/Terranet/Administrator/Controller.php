@@ -82,6 +82,8 @@ class Controller extends ControllerAbstract
      */
     public function update($page, $id, UpdateRequest $request = null)
     {
+        $request = $request ?? UpdateRequest::capture();
+
         $this->authorize('update', $eloquent = app('scaffold.model'));
 
         app('scaffold.actions')->exec('save', [$eloquent, $request]);
@@ -111,6 +113,8 @@ class Controller extends ControllerAbstract
      */
     public function store($page, UpdateRequest $request = null)
     {
+        $request = $request ?? UpdateRequest::capture();
+
         $this->authorize('create', $eloquent = app('scaffold.module')->model());
 
         $eloquent = app('scaffold.actions')->exec('save', [$eloquent, $request]);

@@ -3,7 +3,7 @@
     "description": "Admin Architect - Administration Framework for Laravel. Create Laravel Admin panels at Reactive speed.",
     "require": {
         "php": ">=7.4",
-        "laravelcollective/html": "^6.0",
+        "laravelcollective/html": "^5.6",
         "doctrine/dbal": "~2.5",
         "davejamesmiller/laravel-breadcrumbs": "3.0.*",
         "jonathanwkelly/sh-menus": "dev-master",

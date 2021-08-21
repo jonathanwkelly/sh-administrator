@@ -28,7 +28,7 @@ class Schema
      */
     public function indexedColumns($table)
     {
-        return Cache::remember("{$table}_indexed_columns", $this->lifetime(), function () use ($table) {
+        return Cache::remember("{$table}_indexed_columns", 300, function () use ($table) {
             $indexedColumns = array_reduce($this->indexes($table), function ($indexedColumns, $index) {
                 return array_merge($indexedColumns, $index->getColumns());
             }, []);
@@ -46,7 +46,7 @@ class Schema
      */
     public function indexes($table)
     {
-        return Cache::remember("{$table}_indexes", $this->lifetime(), function () use ($table) {
+        return Cache::remember("{$table}_indexes", 300, function () use ($table) {
             return $this->manager->listTableIndexes($table);
         });
     }
@@ -60,7 +60,7 @@ class Schema
      */
     public function columns($table)
     {
-        return Cache::remember("{$table}_columns", $this->lifetime(), function () use ($table) {
+        return Cache::remember("{$table}_columns", 300, function () use ($table) {
             $columns = $this->manager->listTableColumns($table);
             $keys = array_keys($columns);
             $vals = array_values($columns);
@@ -82,21 +82,9 @@ class Schema
      */
     public function foreignKeys($table)
     {
-        return Cache::remember("{$table}_foreign_keys", $this->lifetime(), function () use ($table) {
+        return Cache::remember("{$table}_foreign_keys", 300, function () use ($table) {
             return $this->manager->listTableForeignKeys($table);
         });
-    }
-
-    /**
-     * Cache lifetime.
-     *
-     * @param int $seconds
-     *
-     * @return DateTime
-     */
-    protected function lifetime($seconds = 300)
-    {
-        return Carbon::now()->addSeconds($seconds);
     }
 
     /**

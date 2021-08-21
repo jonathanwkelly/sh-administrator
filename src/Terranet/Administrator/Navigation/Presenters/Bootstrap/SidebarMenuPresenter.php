@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Navigation\Presenters\Bootstrap;
 
+use Illuminate\Support\Str;
 use Pingpong\Menus\Presenters\Presenter;
 
 class SidebarMenuPresenter extends Presenter
@@ -83,7 +84,7 @@ class SidebarMenuPresenter extends Presenter
      */
     public function getMenuWithDropDownWrapper($item)
     {
-        $key = str_random();
+        $key = Str::random();
 
         return '
 		<li class="'.$this->getActiveStateOnChild($item).' treeview">

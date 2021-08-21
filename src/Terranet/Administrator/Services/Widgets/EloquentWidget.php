@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Services\Widgets;
 
 use Coduo\PHPHumanizer\StringHumanizer;
+use Illuminate\Support\Str;
 use Terranet\Administrator\Contracts\Services\Widgetable;
 
 class EloquentWidget extends AbstractWidget implements Widgetable
@@ -41,7 +42,7 @@ class EloquentWidget extends AbstractWidget implements Widgetable
      */
     protected function fetchTitle()
     {
-        return str_singular(
+        return Str::singular(
             StringHumanizer::humanize(class_basename($this->eloquent))
         );
     }

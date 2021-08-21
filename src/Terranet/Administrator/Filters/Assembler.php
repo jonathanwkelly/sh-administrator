@@ -3,6 +3,8 @@
 namespace Terranet\Administrator\Filters;
 
 use Exception;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -77,7 +79,7 @@ class Assembler
 
             $this->query = is_callable($callback = $scope['callback'])
                 ? call_user_func($callback, $this->query)
-                : call_user_func_array([$this->query, camel_case($scope['callback'])], []);
+                : call_user_func_array([$this->query, Str::camel($scope['callback'])], []);
         }
 
         return $this;
@@ -209,7 +211,7 @@ class Assembler
      */
     protected function translatableColumns(Schema $schema, array $columns = [])
     {
-        return array_except(
+        return Arr::except(
             $schema->columns($this->model->getTranslationModel()->getTable()),
             array_keys($columns)
         );

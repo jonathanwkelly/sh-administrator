@@ -3,6 +3,7 @@
 namespace Terranet\Administrator;
 
 use Coduo\PHPHumanizer\StringHumanizer;
+use Illuminate\Support\Str;
 use Terranet\Administrator\Contracts\ActionsManager;
 use Terranet\Administrator\Contracts\Module;
 use Terranet\Administrator\Contracts\Services\Actions as ActionsService;
@@ -120,7 +121,7 @@ class Actions implements ActionsManager
      */
     protected function action($method)
     {
-        return snake_case($method->getName(), '-');
+        return Str::snake($method->getName(), '-');
     }
 
     protected function title($method)

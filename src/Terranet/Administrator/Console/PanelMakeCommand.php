@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Console;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class PanelMakeCommand extends GeneratorCommand
@@ -126,6 +127,6 @@ OUT;
      */
     protected function getViewName()
     {
-        return snake_case(class_basename($this->parseName($this->getNameInput())));
+        return Str::snake(class_basename($this->parseName($this->getNameInput())));
     }
 }

@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Console;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 class ResourceMakeCommand extends GeneratorCommand
 {
@@ -65,7 +66,7 @@ class ResourceMakeCommand extends GeneratorCommand
         $stub = parent::buildClass($name);
 
         if ($model = $this->argument('model')) {
-            if (!starts_with($model, $namespace = $this->laravel->getNamespace())) {
+            if (!Str::startsWith($model, $namespace = $this->laravel->getNamespace())) {
                 $model = "{$namespace}\\{$model}";
             }
         }

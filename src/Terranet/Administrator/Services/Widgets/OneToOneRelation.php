@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Services\Widgets;
 
 use Coduo\PHPHumanizer\StringHumanizer;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Terranet\Administrator\Contracts\Services\Widgetable;
 
@@ -50,7 +51,7 @@ class OneToOneRelation extends AbstractWidget implements Widgetable
      */
     protected function fetchTitle()
     {
-        return str_singular(
+        return Str::singular(
             StringHumanizer::humanize(class_basename($this->relation->getRelated()))
         );
     }

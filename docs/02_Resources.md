@@ -206,7 +206,7 @@ Customizing each column is a good idea, but it can by annoying for complex resou
 
 There is another (recommended) way to customise resources in Admin Architect, called `Presenters`;
 
-`Presenter` - is a Model's public method prefixed with `present` word and succeeded with column name in a `studly_case` column name:
+`Presenter` - is a Model's public method prefixed with `present` word and succeeded with column name in a `Str::studly` column name:
 
 for example, for model User: 
 * for column `email` presenter will be `User::presentEmail()`,

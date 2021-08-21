@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Traits\Module;
 
 use Coduo\PHPHumanizer\StringHumanizer;
+use Illuminate\Support\Str;
 use Terranet\Administrator\Contracts\Module\Navigable;
 
 trait AllowsNavigation
@@ -14,7 +15,7 @@ trait AllowsNavigation
      */
     public function singular()
     {
-        return str_singular($this->title());
+        return Str::singular($this->title());
     }
 
     /**
@@ -24,7 +25,7 @@ trait AllowsNavigation
      */
     public function title()
     {
-        return StringHumanizer::humanize(str_plural($this->model()->getTable()));
+        return StringHumanizer::humanize(Str::plural($this->model()->getTable()));
     }
 
     /**

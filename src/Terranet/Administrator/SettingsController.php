@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator;
 
+use Illuminate\Support\Arr;
 use Terranet\Administrator\Requests\UpdateRequest;
 
 class SettingsController extends ControllerAbstract
@@ -26,7 +27,7 @@ class SettingsController extends ControllerAbstract
      */
     public function update(UpdateRequest $request)
     {
-        options_save(array_except(
+        options_save(Arr::except(
             $request->all(),
             ['_token', 'save']
         ));

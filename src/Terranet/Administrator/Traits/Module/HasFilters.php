@@ -2,6 +2,8 @@
 
 namespace Terranet\Administrator\Traits\Module;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Coduo\PHPHumanizer\StringHumanizer;
 use Terranet\Translatable\Translatable;
 
@@ -47,7 +49,7 @@ trait HasFilters
 
                 $columns = array_merge(
                     $columns,
-                    array_except($schema->columns($translation->getTable()), array_keys($columns))
+                    Arr::except($schema->columns($translation->getTable()), array_keys($columns))
                 );
             }
 
@@ -195,7 +197,7 @@ trait HasFilters
             $name = $this->humanize($method);
         }
 
-        $this->scopes[str_slug($name, '_')] = [
+        $this->scopes[Str::slug($name, '_')] = [
             'name'     => $name,
             'callback' => $method
         ];

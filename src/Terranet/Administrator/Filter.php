@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Terranet\Administrator\Contracts\Filter as FilterContract;
@@ -141,7 +142,7 @@ class Filter implements FilterContract
     public function setScopes(array $scopes = [])
     {
         if (!empty($scopes)) {
-            $tmp[str_slug('all', '_')] = [
+            $tmp[Str::slug('all', '_')] = [
                 'name' => 'All',
                 'callback' => null,
             ];

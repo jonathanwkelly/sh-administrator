@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Services;
 
+use Illuminate\Support\Str;
 use Terranet\Administrator\Contracts\Services\Widgetable;
 use Terranet\Administrator\Services\Widgets\EloquentWidget;
 
@@ -76,7 +77,7 @@ class Widgets
         $this->sortTabs();
 
         return array_build($this->widgets, function ($i, $widget) {
-            return [str_slug($tab = $widget->getTab()), $tab];
+            return [Str::slug($tab = $widget->getTab()), $tab];
         });
     }
 

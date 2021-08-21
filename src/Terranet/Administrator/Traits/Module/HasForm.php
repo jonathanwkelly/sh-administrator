@@ -4,6 +4,7 @@ namespace Terranet\Administrator\Traits\Module;
 
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Doctrine\DBAL\Schema\Column;
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Terranet\Administrator\Traits\MethodsCollector;
 use Terranet\Translatable\Translatable;
@@ -48,7 +49,7 @@ trait HasForm
                 }
             }
         }
-        
+
         return array_build($editable, function ($key, $column) use ($model, $translatable) {
             $type = $this->inputType($column, $model);
 
@@ -65,7 +66,7 @@ trait HasForm
             }
 
             // detect enums
-            if (array_has($type, 'type') && 'select' == $type['type']) {
+            if (Arr::has($type, 'type') && 'select' == $type['type']) {
                 $type['options'] = ['' => '--Empty--'];
             }
 
@@ -98,7 +99,7 @@ trait HasForm
         $columns = array_merge($columns, $this->allColumns($eloquent));
 
         // map column database type to type
-        if ($column = array_get($columns, $column)) {
+        if ($column = Arr::get($columns, $column)) {
             return $this->mapColumnTypeToFieldType($column);
         }
 
@@ -211,7 +212,7 @@ trait HasForm
 
         $table = is_object($eloquent) ? $eloquent->getTable() : $eloquent;
 
-        if (! array_has($columns, $table) || empty($columns)) {
+        if (! Arr::has($columns, $table) || empty($columns)) {
             $columns[$table] = app('scaffold.schema')->columns($table);
 
             if ($eloquent instanceof Translatable && ($eloquent->getTranslatedAttributes())) {

@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Services;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -145,7 +146,7 @@ class Saver implements SaverContract
      */
     protected function cleanData()
     {
-        $this->data = array_except($this->data, [
+        $this->data = Arr::except($this->data, [
             '_token',
             'save',
             'save_create',
@@ -154,7 +155,7 @@ class Saver implements SaverContract
         ]);
 
         // leave only fillable columns
-        $this->data = array_only($this->data, $this->repository->getFillable());
+        $this->data = Arr::only($this->data, $this->repository->getFillable());
     }
 
     /**

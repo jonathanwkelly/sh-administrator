@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Form;
 
+use Illuminate\Support\Arr;
 use Terranet\Administrator\Contracts\Form\Element as ElementInterface;
 use Terranet\Administrator\Contracts\Form\FormElement;
 use Terranet\Administrator\Contracts\Form\Relationship;
@@ -24,7 +25,7 @@ abstract class Element implements FormElement, ElementInterface, Validable, Rela
 
     public function initFromArray(array $options = null)
     {
-        $this->attributes = array_merge($this->attributes, array_except($options, 'type'));
+        $this->attributes = array_merge($this->attributes, Arr::except($options, 'type'));
 
         $this->validateAttributes();
 

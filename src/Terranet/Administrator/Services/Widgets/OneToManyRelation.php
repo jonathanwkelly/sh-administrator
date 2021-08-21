@@ -3,6 +3,7 @@
 namespace Terranet\Administrator\Services\Widgets;
 
 use Coduo\PHPHumanizer\StringHumanizer;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Terranet\Administrator\Contracts\Services\Widgetable;
 
@@ -50,7 +51,7 @@ class OneToManyRelation extends AbstractWidget implements Widgetable
     {
         $source = $this->relation->getRelated();
 
-        return str_plural(
+        return Str::plural(
             StringHumanizer::humanize(class_basename($source))
         );
     }

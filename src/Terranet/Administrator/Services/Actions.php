@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Services;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Terranet\Administrator\Contracts\Services\Actions as ActionsContract;
 use Terranet\Administrator\Contracts\Services\Saver;
@@ -119,7 +120,7 @@ class Actions implements ActionsContract
      */
     protected function getCachedResponse($method, $item, $module = null)
     {
-        $method = 'can'.title_case($method);
+        $method = 'can'.Str::title($method);
 
         if (!$module) {
             $module = app('scaffold.module');

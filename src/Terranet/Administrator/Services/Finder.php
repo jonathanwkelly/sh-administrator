@@ -2,6 +2,7 @@
 
 namespace Terranet\Administrator\Services;
 
+use Illuminate\Support\Arr;
 use Terranet\Administrator;
 use Terranet\Administrator\Contracts\Module;
 use Terranet\Administrator\Contracts\Services\Finder as FinderContract;
@@ -108,7 +109,7 @@ class Finder implements FinderContract
         $magnetKeys = $magnet->toArray();
 
         foreach ($filters as $filter) {
-            if (array_has($magnetKeys, $filter->getName())) {
+            if (Arr::has($magnetKeys, $filter->getName())) {
                 unset($magnetKeys[$filter->getName()]);
             }
         }

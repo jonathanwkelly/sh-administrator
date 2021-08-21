@@ -8,7 +8,7 @@ namespace {
          * @param string $name
          * @return mixed string|boolean
          */
-        function db_connection($name = null) 
+        function db_connection($name = null)
         {
             if (null === $name) {
                 return DB::connection()->getName();
@@ -58,6 +58,8 @@ namespace {
 namespace admin\helpers {
 
     use Coduo\PHPHumanizer\StringHumanizer;
+    use Illuminate\Support\Arr;
+    use Illuminate\Support\Str;
     use Illuminate\Support\Facades\Request;
     use Illuminate\Support\Facades\Route;
     use Terranet\Administrator\Contracts\Form\HiddenElement;
@@ -227,14 +229,14 @@ namespace admin\helpers {
 
             $fillable = array_merge($fillable, $model->getDates());
 
-            return array_only($model->toArray(), $fillable);
+            return Arr::only($model->toArray(), $fillable);
         }
     }
 
     if (! function_exists('eloquent_attribute')) {
         function eloquent_attribute($object, $key)
         {
-            $presentMethod = 'present' . studly_case($key);
+            $presentMethod = 'present' . Str::studly($key);
 
             if (method_exists($object, $presentMethod)) {
                 return call_user_func([$object, $presentMethod]);

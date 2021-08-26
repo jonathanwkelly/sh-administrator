@@ -8,8 +8,8 @@ use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Creativeorange\Gravatar\GravatarServiceProvider;
-use DaveJamesMiller\Breadcrumbs\Facade as BreadcrumbsFacade;
-use DaveJamesMiller\Breadcrumbs\ServiceProvider as BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\ServiceProvider as BreadcrumbsServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Pingpong\Menus\MenuFacade;
@@ -89,7 +89,7 @@ class ServiceProvider extends BaseServiceProvider
             ContainersServiceProvider::class,
             EventServiceProvider::class,
             BreadcrumbsServiceProvider::class => [
-                'Breadcrumbs' => BreadcrumbsFacade::class,
+                'Breadcrumbs' => Breadcrumbs::class,
             ],
             HtmlServiceProvider::class => [
                 'Html' => HtmlFacade::class,

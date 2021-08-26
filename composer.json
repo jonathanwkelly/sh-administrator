@@ -27,5 +27,15 @@
         "terranet/translatable": "to manage multilingual records",
         "terranet/slug": "to allow slugging"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jonathanwkelly/sh-menus.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/jonathanwkelly/sh-php-humanizer.git"
+        }
+    ],
     "minimum-stability": "dev"
 }

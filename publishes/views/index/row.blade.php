@@ -35,17 +35,17 @@
         <ul class="list-unstyled">
             @if ($actions->authorize('view', $item))
                 <li>
-                    {!! link_to(route('scaffold.view', app('scaffold.magnet')->with(['page' => $module, 'id' => $item])->toArray()), "View") !!}
+                    {!! link_to(route('scaffold.view', app('scaffold.magnet')->with(['module' => $module, 'id' => $item])->toArray()), "View") !!}
                 </li>
             @endif
             @if ($actions->authorize('update', $item))
                 <li>
-                    {!! link_to(route('scaffold.edit', app('scaffold.magnet')->with(['page' => $module, 'id' => $item])->toArray()), "Edit") !!}
+                    {!! link_to(route('scaffold.edit', app('scaffold.magnet')->with(['module' => $module, 'id' => $item])->toArray()), "Edit") !!}
                 </li>
             @endif
             @if ($actions->authorize('delete', $item))
                 <li>
-                    {!! link_to(route('scaffold.delete', app('scaffold.magnet')->with(['page' => $module, 'id' => $item])->toArray()), "Delete", ['onclick' => "return confirm('Are you sure?')"]) !!}
+                    {!! link_to(route('scaffold.delete', app('scaffold.magnet')->with(['module' => $module, 'id' => $item])->toArray()), "Delete", ['onclick' => "return confirm('Are you sure?')"]) !!}
                 </li>
             @endif
             @foreach($actions->actions($item) as $singleURL)

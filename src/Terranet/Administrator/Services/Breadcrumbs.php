@@ -10,26 +10,18 @@ use Terranet\Administrator\Services\Breadcrumbs\EloquentPresenter;
 
 class Breadcrumbs
 {
-    /**
-     * Current scaffold module.
-     *
-     * @var Module
-     */
-    protected $module;
-
-    /**
-     * Breadcrumbs manager.
-     *
-     * @var BreadcrumbsManager
-     */
-    protected $manager;
+    // Current scaffold module.
+    protected Module $module;
+    protected BreadcrumbsManager $manager;
 
     /**
      * @param BreadcrumbsManager $manager
      * @param Module             $module
      */
-    public function __construct(BreadcrumbsManager $manager, Module $module)
-    {
+    public function __construct(
+        BreadcrumbsManager $manager,
+        Module $module
+    ) {
         $this->module = $module;
         $this->manager = $manager;
     }
@@ -79,7 +71,7 @@ class Breadcrumbs
     {
         $this->index();
 
-        $this->manager->register('edit', function (Generator $breadcrumbs) {
+        $this->manager->for('edit', function (Generator $breadcrumbs) {
             $breadcrumbs->parent('index');
 
             $breadcrumbs->push(trans('administrator::module.action.edit', [
@@ -91,7 +83,7 @@ class Breadcrumbs
 
     protected function index()
     {
-        $this->manager->register('index', function (Generator $breadcrumbs) {
+        $this->manager->for('index', function (Generator $breadcrumbs) {
             $breadcrumbs->push($this->module->title(), route('scaffold.index', [
                 'module' => $this->module->url(),
             ]));
@@ -102,7 +94,7 @@ class Breadcrumbs
     {
         $this->index();
 
-        $this->manager->register('create', function (Generator $breadcrumbs) {
+        $this->manager->for('create', function (Generator $breadcrumbs) {
             $breadcrumbs->parent('index');
             $breadcrumbs->push(trans('administrator::module.action.create', [
                 'resource' => $this->module->singular(),
@@ -114,7 +106,7 @@ class Breadcrumbs
     {
         $this->index();
 
-        $this->manager->register('view', function (Generator $breadcrumbs) {
+        $this->manager->for('view', function (Generator $breadcrumbs) {
             $breadcrumbs->parent('index');
             $breadcrumbs->push(trans('administrator::module.action.view', [
                 'resource' => $this->module->singular(),

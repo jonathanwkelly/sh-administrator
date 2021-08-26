@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<form method="post" id="collection" action="{{ route('scaffold.batch', ['page' => $module]) }}">
+<form method="post" id="collection" action="{{ route('scaffold.batch', ['module' => $module]) }}">
     <?=Form::hidden('batch_action', null, ['id' => 'batch_action'])?>
     <?=Form::token()?>
     <table class="table table-bordered table-striped">

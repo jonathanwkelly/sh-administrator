@@ -10,6 +10,7 @@ use Creativeorange\Gravatar\Facades\Gravatar;
 use Creativeorange\Gravatar\GravatarServiceProvider;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\ServiceProvider as BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\Manager as BreadcrumbsManager;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Pingpong\Menus\MenuFacade;
@@ -89,7 +90,7 @@ class ServiceProvider extends BaseServiceProvider
             ContainersServiceProvider::class,
             EventServiceProvider::class,
             BreadcrumbsServiceProvider::class => [
-                'Breadcrumbs' => Breadcrumbs::class,
+                'Breadcrumbs' => BreadcrumbsManager::class,
             ],
             HtmlServiceProvider::class => [
                 'Html' => HtmlFacade::class,
